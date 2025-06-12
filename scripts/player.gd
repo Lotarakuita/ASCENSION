@@ -8,12 +8,11 @@ enum State { IDLE, RUNNING, JUMPING, FALLING, DASHING, SLIDING, CROUCHING }
 @export var input_dash: String = "ui_select"
 @export var input_crouch: String = "ui_down"
 
-# Controller Variables
-@export var speed: float = 700.0
-@export var jump_velocity: float = -400.0
-@export var dash_speed: float = 1200.0
+@export var speed: float = 500.0
+@export var jump_velocity: float =-500.0
+@export var dash_speed: float = 800.0
 @export var dash_time: float = 0.3
-@export var slide_time: float = 1.0
+@export var slide_time: float = 500.0
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var current_state: State = State.IDLE
@@ -21,10 +20,10 @@ var can_double_jump: bool = false
 var has_double_jumped: bool = false
 var dash_timer: float = 0.0
 var dash_direction: Vector2 = Vector2.ZERO
-var slide_timer: float = 0.0
+var slide_timer: float = 500.0
 
 @onready var normal_collision = $NormalCollision
-@onready var crouch_collision = $SlideCollision
+@onready var crouch_collision = $CrouchCollision
 @onready var animated_sprite = $AnimatedSprite2D
 
 func _ready():
@@ -33,16 +32,17 @@ func _ready():
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
-	
+	print(current_state)
 	handle_input()
 	update_movement(delta)
-	update_animation() # Changed from play_animation to avoid confusion
+	play_animation()
 	move_and_slide()
 
 func handle_input():
 	var moving = Input.is_action_pressed(input_left) or Input.is_action_pressed(input_right)
 	var crouching = Input.is_action_pressed(input_crouch)
-	
+
+		
 	match current_state:
 		State.IDLE, State.RUNNING:
 			if not is_on_floor():
@@ -86,7 +86,8 @@ func handle_input():
 			elif not crouching or not is_on_floor():
 				end_crouch()
 				current_state = State.FALLING if not is_on_floor() else State.IDLE
-
+	if not is_on_floor() and velocity.y > 0:
+		current_state = State.FALLING
 func update_movement(delta):
 	var direction = Input.get_axis(input_left, input_right)
 	
@@ -103,31 +104,19 @@ func update_movement(delta):
 		State.DASHING:
 			velocity = dash_direction * dash_speed
 		State.SLIDING:
-			velocity.x = move_toward(velocity.x, 500 * sign(velocity.x), speed * delta) # Maintain direction
+			velocity.x = move_toward(velocity.x, 0, speed * delta)
 		State.CROUCHING:
 			velocity.x = move_toward(velocity.x, 0, speed * 4 * delta)
 
-func update_animation():
-	var target_animation = ""
+func play_animation():
 	match current_state:
-		State.IDLE:
-			target_animation = "Ability Use" # Changed from "Ability Use" (assuming typo)
-		State.RUNNING:
-			target_animation = "Run"
-		State.JUMPING:
-			target_animation = "Jump"
-		State.FALLING:
-			target_animation = "Falling"
-		State.DASHING:
-			target_animation = "Dash"
-		State.SLIDING:
-			target_animation = "Slide"
-		State.CROUCHING:
-			target_animation = "Crouch"
-	
-	# Only play if the current animation is different
-	if animated_sprite.animation != target_animation:
-		animated_sprite.play(target_animation)
+		State.IDLE: animated_sprite.play("Idle")
+		State.RUNNING: animated_sprite.play("Run")
+		State.JUMPING: animated_sprite.play("Jump")
+		State.FALLING: animated_sprite.play("Land")
+		State.DASHING: animated_sprite.play("Dash")
+		State.SLIDING: animated_sprite.play("Slide")
+		State.CROUCHING: animated_sprite.play("Crouch")
 
 func jump():
 	velocity.y = jump_velocity
@@ -139,22 +128,19 @@ func double_jump():
 	velocity.y = jump_velocity * 0.8
 	has_double_jumped = true
 	can_double_jump = false
-	current_state = State.JUMPING # Ensure state remains JUMPING
-	update_animation() # Ensure "Jump" animation plays
 
 func start_dash():
-	if is_on_floor():
-		var direction = Input.get_axis(input_left, input_right)
-		if direction == 0:
-			direction = 1 if not animated_sprite.flip_h else -1 # Use sprite facing if no input
-		dash_direction = Vector2(direction, 0)
-		dash_timer = dash_time
-		current_state = State.DASHING
+	var direction = Input.get_axis(input_left, input_right)
+	if direction == 0:
+		direction = 1
+	dash_direction = Vector2(direction, 0)
+	dash_timer = dash_time
+	current_state = State.DASHING
 
 func start_slide():
 	if is_on_floor():
-		normal_collision.disabled = false # Fixed: Disable normal collision
-		crouch_collision.disabled = true # Fixed: Enable crouch collision
+		normal_collision.disabled = true
+		crouch_collision.disabled = false
 		slide_timer = slide_time
 		current_state = State.SLIDING
 
