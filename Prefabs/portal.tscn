@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=3 uid="uid://c4lrdeg4m87rn"]
+
+[ext_resource type="Texture2D" uid="uid://dl51k4u3wpoeq" path="res://World Design/Dimensional_Portal.png" id="1_166xh"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_umd7t"]
+radius = 17.0
+height = 88.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rqanf"]
+atlas = ExtResource("1_166xh")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u2es8"]
+atlas = ExtResource("1_166xh")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18r6m"]
+atlas = ExtResource("1_166xh")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hsdi1"]
+atlas = ExtResource("1_166xh")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0l1dp"]
+atlas = ExtResource("1_166xh")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2b4wl"]
+atlas = ExtResource("1_166xh")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_38ftt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rqanf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u2es8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_18r6m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hsdi1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0l1dp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2b4wl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Portal" type="Area2D"]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_umd7t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2, 0.499999)
+scale = Vector2(2.0625, 2.71875)
+sprite_frames = SubResource("SpriteFrames_38ftt")
+autoplay = "default"
+frame_progress = 0.762928

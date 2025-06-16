@@ -331,8 +331,10 @@ metadata/_edit_group_ = true
 position = Vector2(4, -40)
 scale = Vector2(1.55, 1.6)
 sprite_frames = SubResource("SpriteFrames_crusb")
-animation = &"Jump"
+animation = &"Land"
 autoplay = "Idle"
+frame = 3
+frame_progress = 1.0
 
 [node name="NormalCollision" type="CollisionShape2D" parent="."]
 position = Vector2(-2, -7)

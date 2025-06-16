@@ -26,6 +26,8 @@ var slide_timer: float = 500.0
 @onready var crouch_collision = $CrouchCollision
 @onready var animated_sprite = $AnimatedSprite2D
 
+var start_position = Vector2(190,430)
+
 func _ready():
 	crouch_collision.disabled = true
 
@@ -37,6 +39,8 @@ func _physics_process(delta):
 	update_movement(delta)
 	play_animation()
 	move_and_slide()
+	if position.y > 900:
+		position = start_position
 
 func handle_input():
 	var moving = Input.is_action_pressed(input_left) or Input.is_action_pressed(input_right)
