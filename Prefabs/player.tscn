@@ -320,7 +320,6 @@ height = 62.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hck1p"]
 radius = 15.0
-height = 38.0
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(0, 1)
@@ -331,17 +330,16 @@ metadata/_edit_group_ = true
 position = Vector2(4, -40)
 scale = Vector2(1.55, 1.6)
 sprite_frames = SubResource("SpriteFrames_crusb")
-animation = &"Land"
+animation = &"Idle"
 autoplay = "Idle"
-frame = 3
-frame_progress = 1.0
+frame_progress = 0.664374
 
 [node name="NormalCollision" type="CollisionShape2D" parent="."]
-position = Vector2(-2, -7)
+position = Vector2(-4, -7)
 shape = SubResource("CapsuleShape2D_02twq")
 
 [node name="CrouchCollision" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 5)
+position = Vector2(-4, 9)
 shape = SubResource("CapsuleShape2D_hck1p")
 
 [node name="Camera2D" type="Camera2D" parent="."]
