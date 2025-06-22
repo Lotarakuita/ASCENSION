@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://c4lrdeg4m87rn"]
+[gd_scene load_steps=11 format=3 uid="uid://c4lrdeg4m87rn"]
 
 [ext_resource type="Texture2D" uid="uid://dl51k4u3wpoeq" path="res://World Design/Dimensional_Portal.png" id="1_166xh"]
+[ext_resource type="Script" uid="uid://drrulbcjt5d0g" path="res://scripts/portal.gd" id="1_umd7t"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_umd7t"]
 radius = 17.0
@@ -57,6 +58,7 @@ animations = [{
 }]
 
 [node name="Portal" type="Area2D"]
+script = ExtResource("1_umd7t")
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -68,3 +70,5 @@ scale = Vector2(2.0625, 2.71875)
 sprite_frames = SubResource("SpriteFrames_38ftt")
 autoplay = "default"
 frame_progress = 0.762928
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
