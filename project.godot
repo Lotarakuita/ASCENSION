@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Ascension"
-run/main_scene="uid://bx0ys4w0ykgdi"
+run/main_scene="uid://dnxs7mvc2kk6h"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 

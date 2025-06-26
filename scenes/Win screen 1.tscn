@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://sp8rslqli55w"]
 
-[ext_resource type="Script" uid="uid://osw668oqcffh" path="res://scenes/menu.gd" id="1_ay2yh"]
+[ext_resource type="Script" uid="uid://osw668oqcffh" path="res://scripts/menu.gd" id="1_ay2yh"]
 
 [node name="win_screen" type="Node2D"]
 script = ExtResource("1_ay2yh")
@@ -10,7 +10,7 @@ offset_left = 512.0
 offset_top = 225.0
 offset_right = 638.0
 offset_bottom = 256.0
-text = "Replay Level
+text = "Replay Tutorial
 "
 
 [node name="Button2" type="Button" parent="."]
@@ -29,3 +29,4 @@ text = "Main Menu"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]
