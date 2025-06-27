@@ -1,32 +1,41 @@
 [gd_scene load_steps=2 format=3 uid="uid://sp8rslqli55w"]
 
-[ext_resource type="Script" uid="uid://osw668oqcffh" path="res://scripts/menu.gd" id="1_ay2yh"]
+[ext_resource type="Script" uid="uid://bltlv3c2ahq47" path="res://scenes/win_screen_1.gd" id="1_ay2yh"]
 
-[node name="win_screen" type="Node2D"]
+[node name="WinScreen1" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 390.0
+offset_top = 258.0
+offset_right = 390.0
+offset_bottom = 258.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_ay2yh")
+metadata/_edit_group_ = true
 
-[node name="Button" type="Button" parent="."]
-offset_left = 512.0
-offset_top = 225.0
-offset_right = 638.0
-offset_bottom = 256.0
-text = "Replay Tutorial
-"
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 324.0
+offset_bottom = 101.0
 
-[node name="Button2" type="Button" parent="."]
-offset_left = 510.0
-offset_top = 165.0
-offset_right = 636.0
-offset_bottom = 196.0
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="next level" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
 text = "Next Level"
 
-[node name="Button3" type="Button" parent="."]
-offset_left = 527.0
-offset_top = 285.0
-offset_right = 623.0
-offset_bottom = 316.0
+[node name="replay level" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Replay Level"
+
+[node name="main menu" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
 text = "Main Menu"
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
-[connection signal="pressed" from="Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/next level" to="." method="_on_next_level_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/replay level" to="." method="_on_replay_level_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/main menu" to="." method="_on_main_menu_pressed"]
