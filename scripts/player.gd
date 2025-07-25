@@ -13,6 +13,7 @@ enum State { IDLE, RUNNING, JUMPING, FALLING, DASHING, SLIDING, CROUCHING }
 @export var dash_speed: float = 800.0
 @export var dash_time: float = 0.3
 @export var slide_time: float = 500.0
+@export var friction : float = 10
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var current_state: State = State.IDLE
@@ -97,7 +98,7 @@ func update_movement(delta):
 	
 	match current_state:
 		State.IDLE:
-			velocity.x = move_toward(velocity.x, 0, speed * 3 * delta)
+			velocity.x = move_toward(velocity.x, 0, speed * friction * delta)
 		State.RUNNING:
 			velocity.x = direction * speed
 			animated_sprite.flip_h = direction < 0

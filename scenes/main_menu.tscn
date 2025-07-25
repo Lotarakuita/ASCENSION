@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dnxs7mvc2kk6h"]
+[gd_scene load_steps=3 format=3 uid="uid://dnxs7mvc2kk6h"]
 
 [ext_resource type="Script" uid="uid://ch58ntsaebqpa" path="res://scripts/main_menu.gd" id="1_l6cm7"]
+[ext_resource type="Texture2D" uid="uid://dcdt7yll7wubp" path="res://World Design/Ocean/Ocean_1/ChatGPT Image Jul 25, 2025, 12_11_06 PM.png" id="2_ekxnf"]
 
 [node name="main_menu" type="Control"]
 layout_mode = 3
@@ -14,7 +15,6 @@ offset_bottom = -412.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_l6cm7")
-metadata/_edit_group_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
@@ -36,6 +36,14 @@ text = "Settings"
 [node name="Exit" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Exit Game"
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+z_index = -4096
+position = Vector2(214.25, 33.5)
+scale = Vector2(0.378418, 0.208984)
+texture = ExtResource("2_ekxnf")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/settings" to="." method="_on_settings_pressed"]
