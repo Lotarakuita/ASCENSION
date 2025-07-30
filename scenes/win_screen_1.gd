@@ -7,4 +7,4 @@ func _on_replay_level_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/game_(test).tscn")
 
 func _on_main_menu_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+	get_tree().change_scene_to_file("res://scenes/Title Screen.tscn")
