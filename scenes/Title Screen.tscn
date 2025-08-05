@@ -170,9 +170,9 @@ vertical_alignment = 1
 [node name="Back" type="Button" parent="Options"]
 layout_mode = 0
 offset_left = 156.0
-offset_top = 305.0
+offset_top = 302.0
 offset_right = 315.0
-offset_bottom = 344.0
+offset_bottom = 341.0
 size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -185,15 +185,33 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_he3hc")
 theme_override_styles/normal = SubResource("StyleBoxFlat_acu0y")
 text = "Back"
 
-[node name="Audio Control" type="HSlider" parent="Options"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Options"]
 layout_mode = 1
-anchors_preset = -1
-offset_left = 132.0
-offset_top = 78.0
-offset_right = 316.0
-offset_bottom = 94.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.5
+offset_top = -93.5
+offset_right = 110.5
+offset_bottom = 93.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Options/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="Label" type="Label" parent="Options/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Musci Volume"
+
+[node name="Audio Control" type="HSlider" parent="Options/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
 theme_override_styles/slider = SubResource("StyleBoxLine_aw7pl")
 theme_override_styles/grabber_area = SubResource("StyleBoxLine_8f6ox")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_8f6ox")
@@ -203,12 +221,8 @@ value = 0.05
 script = ExtResource("4_8f6ox")
 audio_bus_name = "Music"
 
-[node name="Fullscreen control" type="CheckButton" parent="Options"]
-layout_mode = 0
-offset_left = 134.0
-offset_top = 111.0
-offset_right = 319.0
-offset_bottom = 142.0
+[node name="Fullscreen control" type="CheckButton" parent="Options/VBoxContainer"]
+layout_mode = 2
 text = "Fullscreen"
 script = ExtResource("5_axgku")
 
@@ -221,5 +235,5 @@ bus = &"Music"
 [connection signal="pressed" from="Main Buttons/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="Main Buttons/Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="Options/Back" to="." method="_on_back_options_pressed"]
-[connection signal="value_changed" from="Options/Audio Control" to="Options/Audio Control" method="_on_value_changed"]
-[connection signal="toggled" from="Options/Fullscreen control" to="Options/Fullscreen control" method="_on_toggled"]
+[connection signal="value_changed" from="Options/VBoxContainer/HBoxContainer/Audio Control" to="Options/VBoxContainer/HBoxContainer/Audio Control" method="_on_value_changed"]
+[connection signal="toggled" from="Options/VBoxContainer/Fullscreen control" to="Options/VBoxContainer/Fullscreen control" method="_on_toggled"]
