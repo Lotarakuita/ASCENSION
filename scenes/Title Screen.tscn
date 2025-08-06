@@ -206,7 +206,7 @@ theme_override_constants/separation = 5
 
 [node name="Label" type="Label" parent="Options/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "Musci Volume"
+text = "Music Volume"
 
 [node name="Audio Control" type="HSlider" parent="Options/VBoxContainer/HBoxContainer"]
 layout_mode = 2
