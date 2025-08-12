@@ -226,6 +226,9 @@ layout_mode = 2
 text = "Fullscreen"
 script = ExtResource("5_axgku")
 
+[node name="Button" type="Button" parent="Options/VBoxContainer"]
+layout_mode = 2
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_aw7pl")
 autoplay = true
