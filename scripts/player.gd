@@ -106,6 +106,8 @@ func update_movement(delta):
 			if direction != 0:
 				velocity.x = direction * speed
 				animated_sprite.flip_h = direction < 0
+			else:
+				velocity.x = move_toward(velocity.x, 0, speed * friction * delta)
 		State.DASHING:
 			velocity = dash_direction * dash_speed
 		State.SLIDING:
