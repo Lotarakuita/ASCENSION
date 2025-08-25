@@ -14,7 +14,7 @@ enum State { IDLE, RUNNING, JUMPING, FALLING, DASHING, SLIDING, CROUCHING }
 @export var dash_time: float = 0.3
 @export var slide_time: float = 500.0
 @export var friction : float = 10
-
+var last_direction = 1
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var current_state: State = State.IDLE
 var can_double_jump: bool = false
@@ -45,6 +45,8 @@ func _physics_process(delta):
 
 func handle_input():
 	var moving = Input.is_action_pressed(input_left) or Input.is_action_pressed(input_right)
+	if moving: 
+		last_direction = Input.get_axis(input_left, input_right)
 	var crouching = Input.is_action_pressed(input_crouch)
 
 		
@@ -139,7 +141,7 @@ func double_jump():
 func start_dash():
 	var direction = Input.get_axis(input_left, input_right)
 	if direction == 0:
-		direction = 1
+		direction = last_direction
 	dash_direction = Vector2(direction, 0)
 	dash_timer = dash_time
 	current_state = State.DASHING

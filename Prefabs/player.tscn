@@ -174,11 +174,6 @@ animations = [{
 }, {
 "frames": [],
 "loop": false,
-"name": &"DashJump",
-"speed": 10.0
-}, {
-"frames": [],
-"loop": false,
 "name": &"DoubleJump",
 "speed": 20.0
 }, {
@@ -332,9 +327,8 @@ texture_filter = 1
 position = Vector2(4, -40)
 scale = Vector2(1.55, 1.6)
 sprite_frames = SubResource("SpriteFrames_crusb")
-animation = &"Idle"
+animation = &"Run"
 autoplay = "Idle"
-frame_progress = 0.664374
 
 [node name="NormalCollision" type="CollisionShape2D" parent="."]
 position = Vector2(-4, -7)
