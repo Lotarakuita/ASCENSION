@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://sp8rslqli55w"]
+[gd_scene load_steps=4 format=3 uid="uid://sp8rslqli55w"]
 
 [ext_resource type="Script" uid="uid://bltlv3c2ahq47" path="res://scenes/win_screen_1.gd" id="1_ay2yh"]
+[ext_resource type="Texture2D" uid="uid://dhyytlwh36mfe" path="res://World Design/Ocean/Ocean_7/6.png" id="2_je8ce"]
+[ext_resource type="FontFile" uid="uid://dyg48fx1lqu1j" path="res://UI/GrapeSoda.ttf" id="2_p6yhs"]
 
 [node name="WinScreen1" type="Control"]
 texture_filter = 1
@@ -26,16 +28,36 @@ offset_bottom = 101.0
 layout_mode = 2
 
 [node name="next level" type="Button" parent="MarginContainer/VBoxContainer"]
+texture_filter = 1
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_p6yhs")
+theme_override_font_sizes/font_size = 25
 text = "Next Level"
 
 [node name="replay level" type="Button" parent="MarginContainer/VBoxContainer"]
+texture_filter = 1
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_p6yhs")
+theme_override_font_sizes/font_size = 25
 text = "Replay Level"
 
 [node name="main menu" type="Button" parent="MarginContainer/VBoxContainer"]
+texture_filter = 1
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_p6yhs")
+theme_override_font_sizes/font_size = 25
 text = "Main Menu"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -11
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+z_index = -50
+z_as_relative = false
+texture_filter = 1
+position = Vector2(803.5, 451)
+scale = Vector2(0.68967, 0.697531)
+texture = ExtResource("2_je8ce")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/next level" to="." method="_on_next_level_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/replay level" to="." method="_on_replay_level_pressed"]
