@@ -29,6 +29,10 @@ var slide_timer: float = 500.0
 
 var start_position = Vector2(190,430)
 
+func _process(delta):
+	if Input.is_key_pressed(KEY_R):
+		global_position = start_position
+
 func _ready():
 	crouch_collision.disabled = true
 

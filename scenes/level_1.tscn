@@ -21,8 +21,8 @@ layer = -11
 z_index = -50
 z_as_relative = false
 texture_filter = 1
-position = Vector2(803.5, 451)
-scale = Vector2(0.68967, 0.697531)
+position = Vector2(858.5, 451)
+scale = Vector2(0.737413, 0.697531)
 texture = ExtResource("3_1tdkx")
 
 [node name="Label" type="Label" parent="."]
