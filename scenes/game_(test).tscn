@@ -26,8 +26,8 @@ layer = -11
 z_index = -50
 z_as_relative = false
 texture_filter = 1
-position = Vector2(883.5, 451)
-scale = Vector2(0.759114, 0.697531)
+position = Vector2(879, 451)
+scale = Vector2(0.763021, 0.697531)
 texture = ExtResource("4_nfaxm")
 
 [node name="Label3" type="Label" parent="."]
@@ -88,3 +88,14 @@ offset_bottom = 336.0
 theme_override_fonts/font = ExtResource("5_tq4ed")
 text = "Sliding straight after dashing allows
 you to slide longer distances."
+
+[node name="Label7" type="Label" parent="."]
+texture_filter = 1
+offset_left = 3935.0
+offset_top = 280.0
+offset_right = 4274.0
+offset_bottom = 334.0
+theme_override_fonts/font = ExtResource("5_tq4ed")
+text = "If you ever find youself stuck in a spot, pressing 'R'
+sends you character right back to the beginning of
+the level."
